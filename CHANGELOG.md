@@ -17,4 +17,5 @@
 4. Created passwordSettings object which includes possible characters sets, characters used & length of password
 5. Split Character Sets and User Options into 2 separate objects - while related characters are pre-defined but users coices are runtime
 6. On reflection decided to keep object holding character sets but move user choices to array for simpler processing
-7 Added logic to record valid password options in array
+7. Added logic to record valid password options in array
+8. Add logic to build the password

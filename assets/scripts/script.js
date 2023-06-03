@@ -46,9 +46,12 @@ function generatePassword() {
   );
 
   //Get the User's password options
+  // The selected character sets will be stored in an array
+  // The character set names in the array will be used to reference the character set object using bracket notation
+  // Only the selected character sets will be processed
   var passwordOptions = [];
 
-  // Will Lower Case characters be included
+  // Will Lower Case characters be included?
   userChoice = window.prompt(
     "Use Lower Case Characters?\nEnter Y to use Lower Case characters"
   );
@@ -56,14 +59,14 @@ function generatePassword() {
     passwordOptions.push("lowerCase")
   };
 
-  // Will Upper Case characters be included
+  // Will Upper Case characters be included?
   userChoice = window.prompt(
     "Use Upper Case Characters?\nEnter Y to use Upper Case characters");
   if (checkValidOption(userChoice)) {
     passwordOptions.push("upperCase")
   };
 
-  // Will Numbers be included
+  // Will Numbers be included?
   userChoice = window.prompt(
     "Use Numbers?\nEnter Y to use Numbers"
   );
@@ -71,15 +74,30 @@ function generatePassword() {
     passwordOptions.push("numeric")
   };
 
-  // Will Special characters be included
+  // Will Special characters be included?
   userChoice = window.prompt(
     "Use Special Characters?\nEnter Y to use Special Characters");
   if (checkValidOption(userChoice)) {
     passwordOptions.push("special")
   };
 
+  var characterSet = "";
+  var newPassword = "";
+
+  // Build the password using a For Loop
+  for (let i = 0; i < Number(passwordLength); i++) {
+    // Use a Random Number to select the Character Set to be used for this password character
+    // The name of the character is stored in a string that will be used to specifiy which character set in the object will be used
+    // Bracket notation allows the correct proprty of the object to be chosen 
+    characterSet = passwordOptions[Math.floor(Math.random() * passwordOptions.length)];
+
+    // Use a Random Number to select the Character from the chosen character set to be used for this password character
+    // Use concatenation to append the new password character to the password
+    newPassword = newPassword + pwdCharacterSets[characterSet][Math.floor(Math.random() * pwdCharacterSets[characterSet].length)]
+  }
+
   // return the result to writePassword()
-  return passwordLength + "|" + passwordOptions
+  return newPassword;
 }
 
 // check for valid password option

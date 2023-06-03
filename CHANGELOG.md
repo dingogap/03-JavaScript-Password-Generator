@@ -16,3 +16,4 @@
 3. Added code to prompt for Password Length & test length is valid
 4. Created passwordSettings object which includes possible characters sets, characters used & length of password
 5. Split Character Sets and User Options into 2 separate objects - while related characters are pre-defined but users coices are runtime
+6. On reflection decided to keep object holding character sets but move user choices to array for simpler processing

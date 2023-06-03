@@ -14,3 +14,4 @@
 1. Created folder structure and copied supplied code (index.html, style.css, script.js) to appropriate locations
 2. Added supplied password character sets (upperCase, lowerCase, number and specials) to js
 3. Added code to prompt for Password Length & test length is valid
+4. Created PasswordSettings object which includes possible characters sets, characters used & length of password  

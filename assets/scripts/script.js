@@ -11,6 +11,11 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
+// check for valid password option
+function checkValidOption(passwordOption) {
+return (passwordOption != null && passwordOption != undefined && passwordOption.toUpperCase() === "Y");
+}
+
 function generatePassword() {
 
   //Define Object to hold possible character sets
@@ -45,30 +50,36 @@ function generatePassword() {
     isNaN(passwordLength)               // test for entry that is NOT a number
   );
 
- var passwordOptions=[];
-  //Get users Password Options
-  if (window.prompt(
-    "Include Lower Case Characters in your password? Choose Y or N"
-  ) === "Y") {
+  //Get the User's password options
+  var passwordOptions = [];
+
+  // Will Lower Case characters be included
+  userChoice = window.prompt(
+    "Use Lower Case Characters?\nEnter Y to use Lower Case characters"
+  );
+  if (checkValidOption(userChoice)) {
     passwordOptions.push("lowerCase")
   };
 
-  window.alert(passwordOptions[0])
-
-  if (window.prompt(
-    "Include Upper Case Characters in your password? Choose Y or N"
-  ) === "Y") {
+  // Will Upper Case characters be included
+  userChoice = window.prompt(
+    "Use Upper Case Characters?\nEnter Y to use Upper Case characters");
+    if (checkValidOption(userChoice)) {
     passwordOptions.push("upperCase")
   };
 
-  if (window.prompt(
-    "Include Numbers in your password? Choose Y or N"
-  ) === "Y") {
+  // Will Numbers be included
+  userChoice = window.prompt(
+    "Use Numbers?\nEnter Y to use Numbers"
+  );
+  if (checkValidOption(userChoice)) {
     passwordOptions.push("numeric")
   };
-  if (window.prompt(
-    "Include Special Characters in your password? Choose Y or N"
-  ) === "Y") {
+
+  // Will Special characters be included
+  userChoice = window.prompt(
+    "Use Special Characters?\nEnter Y to use Special Characters");
+    if (checkValidOption(userChoice)) {
     passwordOptions.push("special")
   };
 

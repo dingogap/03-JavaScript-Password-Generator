@@ -11,11 +11,6 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-// check for valid password option
-function checkValidOption(passwordOption) {
-return (passwordOption != null && passwordOption != undefined && passwordOption.toUpperCase() === "Y");
-}
-
 function generatePassword() {
 
   //Define Object to hold possible character sets
@@ -64,7 +59,7 @@ function generatePassword() {
   // Will Upper Case characters be included
   userChoice = window.prompt(
     "Use Upper Case Characters?\nEnter Y to use Upper Case characters");
-    if (checkValidOption(userChoice)) {
+  if (checkValidOption(userChoice)) {
     passwordOptions.push("upperCase")
   };
 
@@ -79,10 +74,18 @@ function generatePassword() {
   // Will Special characters be included
   userChoice = window.prompt(
     "Use Special Characters?\nEnter Y to use Special Characters");
-    if (checkValidOption(userChoice)) {
+  if (checkValidOption(userChoice)) {
     passwordOptions.push("special")
   };
 
   // return the result to writePassword()
   return passwordLength + "|" + passwordOptions
+}
+
+// check for valid password option
+// Return true if password option is !null, !undefined and is Y or y
+// This avoids the error on the toUpperCase when user clicks cancel at the prompt
+// A function is used because this code is run 4 times (once for each possble option)
+function checkValidOption(passwordOption) {
+  return (passwordOption != null && passwordOption != undefined && passwordOption.toUpperCase() === "Y");
 }

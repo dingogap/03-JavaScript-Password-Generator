@@ -21,3 +21,4 @@
 8. Add logic to build the password
 9. Updated password settings object to hold min & max password lengths and selected character set options
 10. updated README.md
+11. added test to make sure user chose at least 1 password before trying to  generate password

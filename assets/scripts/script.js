@@ -56,6 +56,8 @@ function generatePassword() {
   // The character set names in the array will be used to reference the character set object using bracket notation
   // Only the selected character sets will be processed
   var passwordOptions = [];
+  var characterSet = "";
+  var newPassword = "";
 
   // Will Lower Case characters be included?
   userChoice = window.prompt(
@@ -87,8 +89,12 @@ function generatePassword() {
     passwordOptions.push("special")
   };
 
-  var characterSet = "";
-  var newPassword = "";
+  //Check if user selected at least 1 Character Set - if passwordOptions >0 then generate the password
+  if (passwordOptions.length===0){
+    newPassword = "All Character Sets were rejected!\nNo Password can be generated!";
+  }
+else {
+  
 
   // Build the password using a For Loop
   for (let i = 0; i < Number(passwordLength); i++) {
@@ -102,6 +108,7 @@ function generatePassword() {
     newPassword = newPassword + passwordSettings[characterSet][Math.floor(Math.random() * passwordSettings[characterSet].length)]
   }
 
+}
   // return the result to writePassword()
   return newPassword;
 }

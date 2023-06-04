@@ -13,12 +13,18 @@ generateBtn.addEventListener("click", writePassword);
 
 function generatePassword() {
 
-  //Define Object to hold possible character sets
-  const pwdCharacterSets = {
+  //Define Object to hold Password Settings
+  //Character Sets
+  //Character Sets to use
+  // Minimum & Maximum Password Legnths
+  const passwordSettings = {
     lowerCase: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",],
     upperCase: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",],
     numeric: ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
-    special: ["@", "%", "+", "\\", "/", "'", "!", "#", "$", "^", "?", ":", ",", ")", "(", "}", "{", "]", "[", "~", "-", "_", ".",]
+    special: ["@", "%", "+", "\\", "/", "'", "!", "#", "$", "^", "?", ":", ",", ")", "(", "}", "{", "]", "[", "~", "-", "_", ".",],
+    options: ["lowerCase", "upperCase", "numeric", "special"],
+    minimumLength: 8,
+    maximumLength: 128,
   }
 
   // Get password length
@@ -26,7 +32,7 @@ function generatePassword() {
   // Check for numeric
   // Check if >=8 and <=128
 
-  //loop until user enters a number >=8 and <=128 or cancels 
+  //loop until user enters a number>= Minimum Password Length and <= Maximum Password Length
   do {
     passwordLength = window.prompt(
       "Enter Password Length.\nPasswords must have at least 8 characters and no more than 128 characters"
@@ -38,10 +44,10 @@ function generatePassword() {
       return "User Cancelled Process";
     }
 
-    // Loop until user enters a number >= 8 and <= 128
+    // Check if user entered a number >= Minimum Password Length and <= Maximum Password Length
   } while (
-    Number(passwordLength) < 8 ||       // test for number NOT >= 8
-    Number(passwordLength) > 128 ||     // test for number NOT <= 128
+    Number(passwordLength) < passwordSettings.minimumLength ||       // test for number NOT >= 8
+    Number(passwordLength) > passwordSettings.maximumLength ||     // test for number NOT <= 128
     isNaN(passwordLength)               // test for entry that is NOT a number
   );
 
@@ -93,7 +99,7 @@ function generatePassword() {
 
     // Use a Random Number to select the Character from the chosen character set to be used for this password character
     // Use concatenation to append the new password character to the password
-    newPassword = newPassword + pwdCharacterSets[characterSet][Math.floor(Math.random() * pwdCharacterSets[characterSet].length)]
+    newPassword = newPassword + passwordSettings[characterSet][Math.floor(Math.random() * passwordSettings[characterSet].length)]
   }
 
   // return the result to writePassword()

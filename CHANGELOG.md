@@ -19,4 +19,5 @@
 6. On reflection decided to keep object holding character sets but move user choices to array for simpler processing
 7. Added logic to record valid password options in array
 8. Add logic to build the password
-9. updated password settings object to hold min & max password lengths and selected character set options
+9. Updated password settings object to hold min & max password lengths and selected character set options
+10. updated README.md

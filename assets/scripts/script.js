@@ -14,9 +14,10 @@ generateBtn.addEventListener("click", writePassword);
 function generatePassword() {
 
   //Define Object to hold Password Settings
-  //Character Sets
-  //Character Sets to use
-  // Minimum & Maximum Password Legnths
+  // - Character Sets
+  // - Character Sets to use
+  //  - Minimum & Maximum Password Legnths
+  //  - Get the next Character to be used randomly from the from the chosen character
   const passwordSettings = {
     lowerCase: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",],
     upperCase: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",],
@@ -102,7 +103,6 @@ function generatePassword() {
     // get the next character set to be used from the array of selected character sets
     randomCharacterSet = passwordOptions[Math.floor(Math.random() * passwordOptions.length)];
 
-    // Use a Random Number to select the Character from the chosen character set to be used for this password character
     // Append the new password character to the password
     newPassword = newPassword + passwordSettings.nextPasswordCharacter(randomCharacterSet);
   }

@@ -59,6 +59,8 @@ function generatePassword() {
   var characterSet = "";
   var newPassword = "";
 
+  // Loop until User has specified at least 1 Character Set
+  do {
   // Will Lower Case characters be included?
   userChoice = window.prompt(
     "Use Lower Case Characters?\nEnter Y to use Lower Case characters"
@@ -91,11 +93,12 @@ function generatePassword() {
 
   //Check if user selected at least 1 Character Set - if passwordOptions >0 then generate the password
   if (passwordOptions.length===0){
-    newPassword = "All Character Sets were rejected!\nNo Password can be generated!";
-  }
-else {
-  
+    window.alert("All Character Sets were rejected!\nNo Password can be generated!\nPlease try again!");
+  };
 
+  // Check if the User has slected at least 1 Character Set
+  } while (passwordOptions.length===0);
+  
   // Build the password using a For Loop
   for (let i = 0; i < Number(passwordLength); i++) {
     // Use a Random Number to select the Character Set to be used for this password character
@@ -106,9 +109,8 @@ else {
     // Use a Random Number to select the Character from the chosen character set to be used for this password character
     // Use concatenation to append the new password character to the password
     newPassword = newPassword + passwordSettings[characterSet][Math.floor(Math.random() * passwordSettings[characterSet].length)]
-  }
+  };
 
-}
   // return the result to writePassword()
   return newPassword;
 }

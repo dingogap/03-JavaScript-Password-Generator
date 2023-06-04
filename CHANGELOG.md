@@ -22,3 +22,4 @@
 9. Updated password settings object to hold min & max password lengths and selected character set options
 10. updated README.md
 11. added test to make sure user chose at least 1 password before trying to  generate password
+12. add do while loop so useer can try again if they didn't select a characer set 

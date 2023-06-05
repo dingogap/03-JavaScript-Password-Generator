@@ -26,7 +26,9 @@ function generatePassword() {
     options: ["lowerCase", "upperCase", "numeric", "special"],
     minimumLength: 8,
     maximumLength: 128,
-    nextPasswordCharacter: function (characterSet) {
+    nextPasswordCharacter: function () {
+      // get the next character set to be used from the array of selected character sets
+      characterSet = passwordOptions[Math.floor(Math.random() * passwordOptions.length)];
       return this[characterSet][Math.floor(Math.random() * this[characterSet].length)];
     }
   }
@@ -100,11 +102,8 @@ function generatePassword() {
 
   // Build the password using a For Loop
   for (let i = 0; i < Number(passwordLength); i++) {
-    // get the next character set to be used from the array of selected character sets
-    randomCharacterSet = passwordOptions[Math.floor(Math.random() * passwordOptions.length)];
-
     // Append the new password character to the password
-    newPassword = newPassword + passwordSettings.nextPasswordCharacter(randomCharacterSet);
+    newPassword = newPassword + passwordSettings.nextPasswordCharacter();
   }
 
   // return the result to writePassword()

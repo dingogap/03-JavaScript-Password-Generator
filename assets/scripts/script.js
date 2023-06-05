@@ -12,30 +12,31 @@ function writePassword() {
 generateBtn.addEventListener("click", writePassword);
 
 function generatePassword() {
-
   //Define Object to hold Password Settings
   // - Character Sets
   // - Character Sets to use
   //  - Minimum & Maximum Password Legnths
   //  - Get the next Character to be used randomly from the from the chosen character
   const passwordSettings = {
-    lowerCase: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",],
-    upperCase: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",],
-    numeric: ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
+    lowercase: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",],
+    uppercase: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",],
+    numbers: ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
     special: ["@", "%", "+", "\\", "/", "'", "!", "#", "$", "^", "?", ":", ",", ")", "(", "}", "{", "]", "[", "~", "-", "_", ".",],
-    options: ["lowerCase", "upperCase", "numeric", "special"],
+    options: ["lowercase", "uppercase", "numbers", "special"],
+    prompts: ["Lowercase Characters", "Uppercase Characters", "Numbers", "Special Characters"],
     minimumLength: 8,
     maximumLength: 128,
     nextPasswordCharacter: function () {
       // get the next character set to be used from the array of selected character sets
       characterSet = passwordOptions[Math.floor(Math.random() * passwordOptions.length)];
-      return this[characterSet][Math.floor(Math.random() * this[characterSet].length)];
-    }
-  }
+      return this[characterSet][Math.floor(Math.random() * this[characterSet].length)
+      ];
+    },
+  };
 
   // Get password length
   // Check for cancel - null
-  // Check for numeric
+  // Check for numbers
   // Check if >=8 and <=128
 
   //loop until user enters a number>= Minimum Password Length and <= Maximum Password Length
@@ -45,16 +46,16 @@ function generatePassword() {
     );
 
     // if user clicks on Cancel or Clicks OK without entering the number of character
-    // end processing and display message 
+    // end processing and display message
     if (!passwordLength || passwordLength === undefined) {
       return "User Cancelled Process";
     }
 
     // Check if user entered a number >= Minimum Password Length and <= Maximum Password Length
   } while (
-    Number(passwordLength) < passwordSettings.minimumLength ||       // test for number NOT >= 8
-    Number(passwordLength) > passwordSettings.maximumLength ||     // test for number NOT <= 128
-    isNaN(passwordLength)               // test for entry that is NOT a number
+    Number(passwordLength) < passwordSettings.minimumLength || // test for number NOT >= 8
+    Number(passwordLength) > passwordSettings.maximumLength || // test for number NOT <= 128
+    isNaN(passwordLength) // test for entry that is NOT a number
   );
 
   //Get the User's password options
@@ -62,42 +63,28 @@ function generatePassword() {
   // The character set names in the array will be used to reference the character set object using bracket notation
   // Only the selected character sets will be processed
   var passwordOptions = [];
-  var randomCharacterSet = "";
   var newPassword = "";
 
-  // Loop until User has specified at least 1 Character Set
+  // loop until the user has included at least 1 valid character set in the password
   do {
-    // Will Lower Case characters be included?
-    userChoice = window.prompt("Use Lower Case Characters?\nEnter Y to use Lower Case characters");
-    if (checkValidOption(userChoice)) {
-      passwordOptions.push("lowerCase")
+    //Loop until through the array of Character Sets until the user has chosen at least 1 character set to be used
+    for (let i = 0; i < passwordSettings.options.length; i++) {
+      // Prompt the user to include or reject a character set
+      userChoice = window.prompt("Use " + passwordSettings.prompts[i]+ "?\nEnter Y to use " + passwordSettings.prompts[i]);
+      // if the user entered a "Y" or "y" then add the character set to the array of character sets to be used
+      if (checkValidOption(userChoice)) {
+        passwordOptions.push(passwordSettings.options[i]);
+      }
     }
-
-    // Will Upper Case characters be included?
-    userChoice = window.prompt("Use Upper Case Characters?\nEnter Y to use Upper Case characters");
-    if (checkValidOption(userChoice)) {
-      passwordOptions.push("upperCase")
-    }
-
-    // Will Numbers be included?
-    userChoice = window.prompt("Use Numbers?\nEnter Y to use Numbers");
-    if (checkValidOption(userChoice)) {
-      passwordOptions.push("numeric")
-    }
-
-    // Will Special characters be included?
-    userChoice = window.prompt(
-      "Use Special Characters?\nEnter Y to use Special Characters");
-    if (checkValidOption(userChoice)) {
-      passwordOptions.push("special")
-    }
-
     //Check if user selected at least 1 Character Set - if passwordOptions >0 then generate the password
     if (passwordOptions.length === 0) {
-      window.alert("All Character Sets were rejected!\nNo Password can be generated!\nPlease try again!");
+      window.alert(
+        "All Character Sets were rejected!\nNo Password can be generated!\nPlease try again!"
+      );
     }
 
     // Check if the User has slected at least 1 Character Set
+    // If not - Repeat
   } while (passwordOptions.length === 0);
 
   // Build the password using a For Loop
@@ -112,8 +99,12 @@ function generatePassword() {
 
 // check for valid password option
 // Return true if password option is !null, !undefined and is Y or y
-// This avoids the error on the toUpperCase when user clicks cancel at the prompt
+// This avoids the error on the touppercase when user clicks cancel at the prompt
 // A function is used because this code is run 4 times (once for each possble option)
 function checkValidOption(passwordOption) {
-  return (passwordOption != null && passwordOption != undefined && passwordOption.toUpperCase() === "Y");
+  return (
+    passwordOption != null &&
+    passwordOption != undefined &&
+    passwordOption.toUpperCase() === "Y"
+  );
 }

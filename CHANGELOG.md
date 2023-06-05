@@ -25,3 +25,4 @@
 12. add do while loop so user can try again if they didn't select a characer set
 13. move the get next pwd character statement into the password object - passing the character set for clarity
 14. move the random character set selector to the password object
+15. Reduce the 4 prompts to a single prompt in a loop based on the numebr of characters sets in the password object

@@ -26,3 +26,4 @@
 13. move the get next pwd character statement into the password object - passing the character set for clarity
 14. move the random character set selector to the password object
 15. Reduce the 4 prompts to a single prompt in a loop based on the numebr of characters sets in the password object
+16. make the charcter set choices array a propery in the passwordSettings object

@@ -14,7 +14,9 @@ generateBtn.addEventListener("click", writePassword);
 function generatePassword() {
   //Define Object to hold Password Settings
   // - Character Sets
-  // - Character Sets to use
+  // - Character Sets to choose from
+  // - Prompts for the Character Set
+  // - Character Sets to be used
   //  - Minimum & Maximum Password Legnths
   //  - Get the next Character to be used randomly from the from the chosen character
   const passwordSettings = {
@@ -24,11 +26,13 @@ function generatePassword() {
     special: ["@", "%", "+", "\\", "/", "'", "!", "#", "$", "^", "?", ":", ",", ")", "(", "}", "{", "]", "[", "~", "-", "_", ".",],
     options: ["lowercase", "uppercase", "numbers", "special"],
     prompts: ["Lowercase Characters", "Uppercase Characters", "Numbers", "Special Characters"],
+    choices: [],
     minimumLength: 8,
     maximumLength: 128,
     nextPasswordCharacter: function () {
-      // get the next character set to be used from the array of selected character sets
-      characterSet = passwordOptions[Math.floor(Math.random() * passwordOptions.length)];
+      // Get the next character set to be used from the array of selected character sets
+      characterSet = this.choices[Math.floor(Math.random() * this.choices.length)];
+      // Get the next Password Character
       return this[characterSet][Math.floor(Math.random() * this[characterSet].length)
       ];
     },
@@ -39,13 +43,13 @@ function generatePassword() {
   // Check for numbers
   // Check if >=8 and <=128
 
-  //loop until user enters a number>= Minimum Password Length and <= Maximum Password Length
+  //Loop until user enters a number>= Minimum Password Length and <= Maximum Password Length
   do {
     passwordLength = window.prompt(
       "Enter Password Length.\nPasswords must have at least 8 characters and no more than 128 characters"
     );
 
-    // if user clicks on Cancel or Clicks OK without entering the number of character
+    // If user clicks on Cancel or Clicks OK without entering the number of characters
     // end processing and display message
     if (!passwordLength || passwordLength === undefined) {
       return "User Cancelled Process";
@@ -62,22 +66,22 @@ function generatePassword() {
   // The selected character sets will be stored in an array
   // The character set names in the array will be used to reference the character set object using bracket notation
   // Only the selected character sets will be processed
-  var passwordOptions = [];
   var newPassword = "";
 
   // loop until the user has included at least 1 valid character set in the password
   do {
     //Loop until through the array of Character Sets until the user has chosen at least 1 character set to be used
     for (let i = 0; i < passwordSettings.options.length; i++) {
+
       // Prompt the user to include or reject a character set
-      userChoice = window.prompt("Use " + passwordSettings.prompts[i]+ "?\nEnter Y to use " + passwordSettings.prompts[i]);
-      // if the user entered a "Y" or "y" then add the character set to the array of character sets to be used
+      userChoice = window.prompt("Use " + passwordSettings.prompts[i] + "?\nEnter Y to use " + passwordSettings.prompts[i]);
+      // If the user entered a "Y" or "y" add the character set to the choices property in the passwordSettings object
       if (checkValidOption(userChoice)) {
-        passwordOptions.push(passwordSettings.options[i]);
+        passwordSettings.choices.push(passwordSettings.options[i]);
       }
     }
     //Check if user selected at least 1 Character Set - if passwordOptions >0 then generate the password
-    if (passwordOptions.length === 0) {
+    if (passwordSettings.choices.length === 0) {
       window.alert(
         "All Character Sets were rejected!\nNo Password can be generated!\nPlease try again!"
       );
@@ -85,7 +89,7 @@ function generatePassword() {
 
     // Check if the User has slected at least 1 Character Set
     // If not - Repeat
-  } while (passwordOptions.length === 0);
+  } while (passwordSettings.choices.length === 0);
 
   // Build the password using a For Loop
   for (let i = 0; i < Number(passwordLength); i++) {
@@ -93,7 +97,7 @@ function generatePassword() {
     newPassword = newPassword + passwordSettings.nextPasswordCharacter();
   }
 
-  // return the result to writePassword()
+  // Return the result to writePassword()
   return newPassword;
 }
 

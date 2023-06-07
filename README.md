@@ -147,6 +147,7 @@ The development history is recorded in the [Changelog](./CHANGELOG.md).
 2. Prior knowlege and experience
 3. [MDM Web Docs][def2] working with objects
 4. [MDM Web Docs][def3] loops and iteration
+5. Character Sets provided in class as Useful Resources
 
 [def1]: https://dingogap.github.io/03-JavaScript-Password-Generator/
 [def2]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_objects

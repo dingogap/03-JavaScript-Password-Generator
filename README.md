@@ -98,32 +98,32 @@ If:
 ![Password Generator](assets/websiteImages/checkForLowercaseChars.png)
 
 If:
-&nbsp;&nbsp;&nbsp;&nbsp;1. Y or y is entered in this prompt then Lowercase Chacters will be included in password
-&nbsp;&nbsp;&nbsp;&nbsp;2. Any other character is entered Lowercase Characters will not be included in the password
+&nbsp;&nbsp;&nbsp;&nbsp;1. If OK is clicked then Lowercase Chacters will be included in password
+&nbsp;&nbsp;&nbsp;&nbsp;2. If Cancel is clicked then Lowercase Characters will not be included in the password
 
 #### Prompt 3: Check for Uppercase Characters
 
-![Password Generator](assets/websiteImages/checkForUpperercaseChars.png)
+![Password Generator](assets/websiteImages/checkForUppercaseChars.png)
 
 If:
-&nbsp;&nbsp;&nbsp;&nbsp;1. Y or y is entered in this prompt then Uppercase Chacters will be included in password
-&nbsp;&nbsp;&nbsp;&nbsp;2. Any other character is entered Uppercase Characters will not be included in the password
+&nbsp;&nbsp;&nbsp;&nbsp;1. If OK is clicked then Uppercase Chacters will be included in password
+&nbsp;&nbsp;&nbsp;&nbsp;2. If Cancel is clicked then Uppercase Characters will not be included in the password
 
 #### Prompt 4: Check for Numbers
 
 ![Password Generator](assets/websiteImages/checkForNumbers.png)
 
 If:
-&nbsp;&nbsp;&nbsp;&nbsp;1. Y or y is entered in this prompt then Numbers will be included in password
-&nbsp;&nbsp;&nbsp;&nbsp;2. Any other character is entered Numbers will not be included in the password
+&nbsp;&nbsp;&nbsp;&nbsp;1. If OK is clicked then Numbers will be included in password
+&nbsp;&nbsp;&nbsp;&nbsp;2. If Cancel is clicked then Numbers will not be included in the password
 
 #### Prompt 5: Check for Special Characters
 
 ![Password Generator](assets/websiteImages/checkForSpecialChars.png)
 
 If:
-&nbsp;&nbsp;&nbsp;&nbsp;1. Y or y is entered in this prompt then Special Characters will be included in password
-&nbsp;&nbsp;&nbsp;&nbsp;2. Any other character is entered Special Characters will not be included in the password
+&nbsp;&nbsp;&nbsp;&nbsp;1.If OK is clicked then Special Characters will be included in password
+&nbsp;&nbsp;&nbsp;&nbsp;2. If Cancel is clicked then Special Characters will not be included in the password
 
 #### Error Message: No Character Sets Selected
 ![Password Generator](assets/websiteImages/NoCharSetsSelected.png)

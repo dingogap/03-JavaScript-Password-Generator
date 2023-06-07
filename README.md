@@ -3,6 +3,11 @@
 ## Description
 The Password Generator builds complex passwords on demand.
 
+It is a simple process that:
+1: gets the number of chacters to be used in the password
+2: gets the number & character sets to be used & flags them
+3. generates a password of the required length using the specified character sets
+
 #### Passwords Rules:
 1. Minimum Length: 8 characters
 2. Maximum Length: 128 Characters
@@ -13,7 +18,51 @@ The Password Generator builds complex passwords on demand.
     * special characters
     * at least 1 character set must be used
 
+## Data
+All data specific to generating the password has been placed in a JavaScript object named **passwordSettings**.
+
+Any changes to the password specifications (number of characters or minimum character sets) are made in the object. There would generally be no need to change the code. 
+
+**passwordSettings** contains the following:
+
+    lowercase: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",],
     
+    uppercase: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",],
+    
+    numbers: ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
+    
+    special: ["@", "%", "+", "\\", "/", "'", "!", "#", "$", "^", "?", ":", ",", ")", "(", "}", "{", "]", "[", "~", "-", "_", ".",],
+    
+    options: ["lowercase", "uppercase", "numbers", "special"],
+    
+    prompts: ["Lowercase Characters", "Uppercase Characters", "Numbers", "Special Characters"],
+    
+    choices: [],
+    
+    minimumLength: 8,
+    
+    maximumLength: 128,
+    
+    minimumCharacterSets: 1,
+    
+    nextPasswordCharacter: function () {
+      // Get the next character set to be used from the array of selected character sets
+      characterSet = this.choices[Math.floor(Math.random() * this.choices.length)];
+      // Get the next Password Character
+      return this[characterSet][Math.floor(Math.random() * this[characterSet].length)
+      ];
+    },
+ 
+1. **lowercase, uppercase, numbers and special** are arrays that hold the Character Sets that can be used.
+2. **options** holds names of the charcaters sets
+3. **prompts** holds message prompts to allow looping
+4. **choices** holds the charcater set choices entered at runtime
+5. **minimumLength** is the minimum password length
+6. **maximumLength** is the maximum password length
+7. **minimumCharacterSets** is the minimum number of charcater sets to be used in the password
+8. **nextPasswordCharacter** is a function that will generate the next character using the information stored in the object.
+
+
 
 ## Password Generator Website Link
 Click the link to visit the deployed wbsite: [Password Generator][def1].
@@ -91,8 +140,6 @@ The development history is recorded in the [Changelog](./CHANGELOG.md).
 2. Prior knowlege and experience
 3. [MDM Web Docs][def2] working with objects
 4. [MDM Web Docs][def3] loops and iteration
-
-
 
 [def1]: https://dingogap.github.io/03-JavaScript-Password-Generator/
 [def2]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_objects

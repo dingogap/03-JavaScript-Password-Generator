@@ -31,3 +31,6 @@
 18. add Navigation images to README.md
 19. add a function to append an s to a work if it is a plural
 20. change window.prompt to window.confirm for selecting charcter sets
+21. attempted to resolve permissions error in cnsole with
+ ``<meta http-equiv="Permissions-Policy" content="interest-cohort=()">``
+ 22. No effect noted so code removed

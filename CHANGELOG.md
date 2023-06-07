@@ -28,4 +28,5 @@
 15. Reduce the 4 prompts to a single prompt in a loop based on the numebr of characters sets in the password object
 16. make the charcter set choices array a propery in the passwordSettings object
 17. add Website Image to README.md
-18. add Navigation images to README.md 
+18. add Navigation images to README.md
+19. add a function to append an s to a work if it is a plural

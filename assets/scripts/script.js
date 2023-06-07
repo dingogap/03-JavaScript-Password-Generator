@@ -31,6 +31,7 @@ function generatePassword() {
     choices: [],
     minimumLength: 8,
     maximumLength: 128,
+    minimumCharacterSets: 1,
     nextPasswordCharacter: function () {
       // Get the next character set to be used from the array of selected character sets
       characterSet = this.choices[Math.floor(Math.random() * this.choices.length)];
@@ -76,22 +77,22 @@ function generatePassword() {
     for (let i = 0; i < passwordSettings.options.length; i++) {
 
       // Prompt the user to include or reject a character set
-      userChoice = window.prompt("\nUse " + passwordSettings.prompts[i] + "?\n\nEnter Y or y to use " + passwordSettings.prompts[i]+".\n");
+      userChoice = window.prompt("\nUse " + passwordSettings.prompts[i] + "?\n\nEnter Y or y to use " + passwordSettings.prompts[i] + ".\n");
       // If the user entered a "Y" or "y" add the character set to the choices property in the passwordSettings object
       if (checkValidOption(userChoice)) {
         passwordSettings.choices.push(passwordSettings.options[i]);
       }
     }
-    //Check if user selected at least 1 Character Set - if passwordOptions >0 then generate the password
-    if (passwordSettings.choices.length === 0) {
+    //Check if user selected the minimum Character Sets - if not generate a warning message
+    if (passwordSettings.choices.length < passwordSettings.minimumCharacterSets) {
       window.alert(
-        "\nYou did not select a Character Set!\n\nYou have to select at least 1 Character Set to generate a password\n\nPlease try again!"
+        "\nYou did not select a Character Set!\n\nYou have to select at least " + passwordSettings.minimumCharacterSets + " Character Set" + checkForMoreThanOne(passwordSettings.minimumCharacterSets) + " to generate a password\n\nPlease try again!"
       );
     }
 
-    // Check if the User has selected at least 1 Character Set
+    // Check if the User has selected the minimum Character Sets
     // If not - Repeat
-  } while (passwordSettings.choices.length === 0);
+  } while (passwordSettings.choices.length < passwordSettings.minimumCharacterSets);
 
   // Build the password using a For Loop
   for (let i = 0; i < Number(passwordLength); i++) {
@@ -103,7 +104,7 @@ function generatePassword() {
   return newPassword;
 }
 
-// check for valid password option
+// Check for valid password option
 // Return true if password option is !null, !undefined and is Y or y
 // This avoids the error on the toUpperCase when user clicks cancel at the prompt
 // A function is used because this code is run 4 times (once for each possble option)
@@ -113,4 +114,15 @@ function checkValidOption(passwordOption) {
     passwordOption != undefined &&          // Didn't clock OK on empty
     passwordOption.toUpperCase() === "Y"    // Entered Y or y
   );
+}
+
+// Check if there are more than 1 item & is so return an s
+// This is used to changes a word from singular to plural if applicable
+function checkForMoreThanOne(checkValue) {
+  if (checkValue > 1) {
+    addAnS = "s";
+  } else {
+    addAnS = "";
+  }
+  return addAnS;
 }

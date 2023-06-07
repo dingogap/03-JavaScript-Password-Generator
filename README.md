@@ -5,7 +5,7 @@ The Password Generator builds complex passwords on demand.
 
 It is a simple process that:
 1. gets the number of chacters to be used in the password
-2. gets the number & character sets to be used & flags them
+2. gets the number of character sets to be used & flags them
 3. generates a password of the required length using the specified character sets.
 
 #### Passwords Rules:

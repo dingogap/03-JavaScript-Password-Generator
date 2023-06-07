@@ -4,9 +4,9 @@
 The Password Generator builds complex passwords on demand.
 
 It is a simple process that:
-1: gets the number of chacters to be used in the password
-2: gets the number & character sets to be used & flags them
-3. generates a password of the required length using the specified character sets
+1. gets the number of chacters to be used in the password
+2. gets the number & character sets to be used & flags them
+3. generates a password of the required length using the specified character sets.
 
 #### Passwords Rules:
 1. Minimum Length: 8 characters
@@ -16,7 +16,7 @@ It is a simple process that:
     * upper case charcaters
     * numbers
     * special characters
-    * at least 1 character set must be used
+    * at least 1 character set must be used.
 
 ## Data
 All data specific to generating the password has been placed in a JavaScript object named **passwordSettings**.
@@ -59,7 +59,7 @@ Any changes to the password specifications (number of characters or minimum char
 4. **choices** holds the charcater set choices entered at runtime
 5. **minimumLength** is the minimum password length
 6. **maximumLength** is the maximum password length
-7. **minimumCharacterSets** is the minimum number of charcater sets to be used in the password
+7. **minimumCharacterSets** is the minimum number of character sets to be used in the password
 8. **nextPasswordCharacter** is a function that will generate the next character using the information stored in the object.
 
 

@@ -11,9 +11,20 @@ The Password Generator builds complex passwords on demand.
     * upper case charcaters
     * numbers
     * special characters
+    * At least 1 character set must be used
 
 ## Password Generator Website Link
 Click the link to visit the deployed wbsite: [Password Generator][def1].
+
+## Site Structure
+
+## Navigation
+
+## Password Generator Website
+The Password Generator website looks like this:. 
+![Password Generator](assets/websiteImages/passwordGenerator.png)
+
+## Refactoring Changes 
 
 
 ## Changelog

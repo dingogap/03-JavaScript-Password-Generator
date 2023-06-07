@@ -27,3 +27,4 @@
 14. move the random character set selector to the password object
 15. Reduce the 4 prompts to a single prompt in a loop based on the numebr of characters sets in the password object
 16. make the charcter set choices array a propery in the passwordSettings object
+17. add Website Image to README.md

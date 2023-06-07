@@ -1,6 +1,7 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
@@ -17,8 +18,9 @@ function generatePassword() {
   // - Character Sets to choose from
   // - Prompts for the Character Set
   // - Character Sets to be used
-  //  - Minimum & Maximum Password Legnths
-  //  - Get the next Character to be used randomly from the from the chosen character
+  // - Minimum & Maximum Password Legnths
+  // - Get the next Character to be used randomly from the from the chosen character
+
   const passwordSettings = {
     lowercase: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",],
     uppercase: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",],
@@ -46,13 +48,13 @@ function generatePassword() {
   //Loop until user enters a number>= Minimum Password Length and <= Maximum Password Length
   do {
     passwordLength = window.prompt(
-      "Enter Password Length.\nPasswords must have at least 8 characters and no more than 128 characters"
+      "\nEnter Password Length.\n\nPasswords must have at least 8 characters and no more than 128 characters.\n\nClick Cancel to quit.\n"
     );
 
-    // If user clicks on Cancel or Clicks OK without entering the number of characters
-    // end processing and display message
+    // If user clicks on Cancel or Clicks OK without entering the number of charactersconsole.log
+    // end processing
     if (!passwordLength || passwordLength === undefined) {
-      return "User Cancelled Process";
+      return null;
     }
 
     // Check if user entered a number >= Minimum Password Length and <= Maximum Password Length
@@ -74,7 +76,7 @@ function generatePassword() {
     for (let i = 0; i < passwordSettings.options.length; i++) {
 
       // Prompt the user to include or reject a character set
-      userChoice = window.prompt("Use " + passwordSettings.prompts[i] + "?\nEnter Y to use " + passwordSettings.prompts[i]);
+      userChoice = window.prompt("\nUse " + passwordSettings.prompts[i] + "?\n\nEnter Y or y to use " + passwordSettings.prompts[i]+".\n");
       // If the user entered a "Y" or "y" add the character set to the choices property in the passwordSettings object
       if (checkValidOption(userChoice)) {
         passwordSettings.choices.push(passwordSettings.options[i]);
@@ -83,32 +85,32 @@ function generatePassword() {
     //Check if user selected at least 1 Character Set - if passwordOptions >0 then generate the password
     if (passwordSettings.choices.length === 0) {
       window.alert(
-        "All Character Sets were rejected!\nNo Password can be generated!\nPlease try again!"
+        "\nYou did not select a Character Set!\n\nYou have to select at least 1 Character Set to generate a password\n\nPlease try again!"
       );
     }
 
-    // Check if the User has slected at least 1 Character Set
+    // Check if the User has selected at least 1 Character Set
     // If not - Repeat
   } while (passwordSettings.choices.length === 0);
 
   // Build the password using a For Loop
   for (let i = 0; i < Number(passwordLength); i++) {
     // Append the new password character to the password
+    // All the work is done by the passwordSettings object making management easier
     newPassword = newPassword + passwordSettings.nextPasswordCharacter();
   }
-
   // Return the result to writePassword()
   return newPassword;
 }
 
 // check for valid password option
 // Return true if password option is !null, !undefined and is Y or y
-// This avoids the error on the touppercase when user clicks cancel at the prompt
+// This avoids the error on the toUpperCase when user clicks cancel at the prompt
 // A function is used because this code is run 4 times (once for each possble option)
 function checkValidOption(passwordOption) {
   return (
-    passwordOption != null &&
-    passwordOption != undefined &&
-    passwordOption.toUpperCase() === "Y"
+    passwordOption != null &&               // Didn't click Cancel
+    passwordOption != undefined &&          // Didn't clock OK on empty
+    passwordOption.toUpperCase() === "Y"    // Entered Y or y
   );
 }

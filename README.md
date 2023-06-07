@@ -8,7 +8,7 @@ It is a simple process that:
 2. gets the number of character sets to be used & flags them
 3. selects a random character from a character set chosen randomly from the set of flagged character sets
 4. appends the character to the end of the password
-5. displays the password in the textara.
+5. displays the password in the textarea.
 
 #### Passwords Rules:
 1. Minimum Length: 8 characters
@@ -70,6 +70,11 @@ Changes to the password specifications (number of characters or minimum characte
 Click the link to visit the deployed wbsite: [Password Generator][def1].
 
 ## Site Structure
+
+The Password Generator is a landing page tha contains :
+1: Header - containing a Heading
+2: Main Content Area - containing a Text Area that will display the generated password.
+3. A button that initiates the JS code to generate the password.
 
 ## Navigation
 

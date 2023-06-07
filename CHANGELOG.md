@@ -30,3 +30,4 @@
 17. add Website Image to README.md
 18. add Navigation images to README.md
 19. add a function to append an s to a work if it is a plural
+20. change window.prompt to window.confirm for selecting charcter sets

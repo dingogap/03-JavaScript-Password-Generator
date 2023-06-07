@@ -77,9 +77,8 @@ function generatePassword() {
     for (let i = 0; i < passwordSettings.options.length; i++) {
 
       // Prompt the user to include or reject a character set
-      userChoice = window.prompt("\nUse " + passwordSettings.prompts[i] + "?\n\nEnter Y or y to use " + passwordSettings.prompts[i] + ".\n");
-      // If the user entered a "Y" or "y" add the character set to the choices property in the passwordSettings object
-      if (checkValidOption(userChoice)) {
+
+      if (window.confirm("\nUse " + passwordSettings.prompts[i] + "?\n\nClick OK to use " + passwordSettings.prompts[i] + " or Cancel to reject.\n")) {
         passwordSettings.choices.push(passwordSettings.options[i]);
       }
     }
